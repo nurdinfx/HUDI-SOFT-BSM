@@ -113,10 +113,12 @@ const UsersRoles = () => {
         }
     };
 
-    const filteredStaff = staff.filter(s =>
-        s.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        s.email.toLowerCase().includes(searchTerm.toLowerCase())
-    );
+    const filteredStaff = Array.isArray(staff) ? staff.filter(s => {
+        const name = s.name || '';
+        const email = s.email || '';
+        const search = searchTerm.toLowerCase();
+        return name.toLowerCase().includes(search) || email.toLowerCase().includes(search);
+    }) : [];
 
     const getRoleBadge = (role) => {
         switch(role) {

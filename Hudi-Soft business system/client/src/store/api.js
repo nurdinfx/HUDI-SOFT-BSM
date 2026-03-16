@@ -24,7 +24,10 @@ api.interceptors.response.use(
     (error) => {
         if (error.response && error.response.status === 401) {
             localStorage.removeItem('token');
-            // Optional: window.location.href = '/login';
+            // Redirect to login or refresh the page to trigger the app's auth logic
+            if (window.location.pathname !== '/login') {
+                window.location.href = '/login';
+            }
         }
         return Promise.reject(error);
     }

@@ -130,11 +130,15 @@ const Staff = () => {
         }
     };
 
-    const filteredStaff = Array.isArray(staff) ? staff.filter(s =>
-        s.user?.name?.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        s.user?.email?.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        s.employeeId?.toLowerCase().includes(searchTerm.toLowerCase())
-    ) : [];
+    const filteredStaff = Array.isArray(staff) ? staff.filter(s => {
+        const name = s.user?.name || '';
+        const email = s.user?.email || '';
+        const empId = s.employeeId || '';
+        const search = searchTerm.toLowerCase();
+        return name.toLowerCase().includes(search) || 
+               email.toLowerCase().includes(search) || 
+               empId.toLowerCase().includes(search);
+    }) : [];
 
     return (
         <div className="space-y-8">
