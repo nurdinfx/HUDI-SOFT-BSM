@@ -96,7 +96,7 @@ const AuditLog = () => {
                                                 {log.module}
                                             </td>
                                             <td className="px-6 py-4 text-sm text-secondary-500 max-w-xs truncate">
-                                                {log.details}
+                                                {typeof log.details === 'object' ? JSON.stringify(log.details) : log.details}
                                             </td>
                                         </tr>
                                     ))

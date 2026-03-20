@@ -177,7 +177,7 @@ const UsersRoles = () => {
                                     <tr key={s._id} className="hover:bg-secondary-50/50 dark:hover:bg-secondary-800/30 transition-colors">
                                         <td className="px-6 py-4 flex items-center gap-3">
                                             <div className="w-10 h-10 rounded-full bg-primary-100 text-primary-600 flex items-center justify-center font-bold">
-                                                {s.name.substring(0, 2).toUpperCase()}
+                                                {(s.name || 'U').substring(0, 2).toUpperCase()}
                                             </div>
                                             <div>
                                                 <p className="font-bold text-secondary-900 dark:text-white">{s.name}</p>
